@@ -34,6 +34,17 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=200, null =True)
 
     @property
+    def shipping(self):
+        shiping = False
+        orderitems = self.orderitem_set.all()
+        for i in orderitems:
+            if i.product.Digital ==False:
+                shipping = True  
+        return shipping
+
+        
+
+    @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
 
