@@ -38,7 +38,7 @@ class Order(models.Model):
         shiping = False
         orderitems = self.orderitem_set.all()
         for i in orderitems:
-            if i.product.Digital ==False:
+            if i.product.Digital == False:
                 shipping = True  
         return shipping
 
@@ -72,9 +72,6 @@ class OrderItem(models.Model):
         total = self.product.price* self.quantity
         return total
 
-
-
-        return
         
 
 
