@@ -115,11 +115,13 @@
 				shippingInfo.state = form.state.value
 				shippingInfo.zipcode = form.zipcode.value
 			}
-			if(user =='AnonumousUser'){
-				shippingInfo.name = form.name.value
-				shippingInfo.email = form.email.value
-			}
+			if (user == 'AnonymousUser'){
+	    		userFormData.name = form.name.value
+	    		userFormData.email = form.email.value
+	    	}
 
+	    	console.log('Shipping Info:', shippingInfo)
+	    	console.log('User Info:', userFormData)
 			
 			var url = '/process_order/'
 
@@ -138,6 +140,8 @@
 			.then((data) =>{
 				console.log('Sucess:',data)
 				alert('Transaction Compeleted')
+				cart = {}
+				document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
 				window.location.href= "{% url 'store' %}"
 			})		
 		}

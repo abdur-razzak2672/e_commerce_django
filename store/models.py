@@ -6,7 +6,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=200, null =True)
     email = models.CharField(max_length=200, null =True)
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Product(models.Model):
@@ -16,7 +16,7 @@ class Product(models.Model):
     image = models.ImageField(blank = True, null =True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
     
     @property
     def imageURL(self):
@@ -38,7 +38,7 @@ class Order(models.Model):
         shiping = False
         orderitems = self.orderitem_set.all()
         for i in orderitems:
-            if i.product.Digital == False:
+             if i.product.Digital == False:
                 shipping = True  
         return shipping
 
@@ -84,6 +84,6 @@ class ShippingAddress(models.Model):
     zipcode = models.CharField(max_length=200, null =True)
     date_added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.address
+        return str(self.address)
 
 
